@@ -1,11 +1,29 @@
 ##新的vps 环境配置
 
-###挂载data磁盘，并进行4k优化
-###更新yum源，并yum update 更新了内核
-###配置IPtables防火墙，开放22 9999 8080 1883四个端口
-###安装nginx php55w mysql，并设置开机启动，修改nginx，php-fpm，php.ini 等配置文件，为mysql配置初始密码。
-###下载并安装jdk1.7.0_65 版本，rpm 版本，用rpm -ivh 命令进行安装，安装完之后配置/etc/profile文件，修改path info
-###将data文件夹设置为数据文件夹，log，backup，www都设在此下。
+### 初始配置
+- 挂载data磁盘，并进行4k优化
+- 更新yum源，并yum update 更新了内核
+- 配置IPtables防火墙，开放22 9999 8080 1883四个端口
+
+### 安装nginx
+  安装nginx,修改nginx.conf
+  设置开机启动;
+  
+### 安装php
+
+  安装php55w,php-fpm,php扩展,修改php.ini，修改php-fpm.conf
+  设置php-fpm开机启动;
+  
+### 安装mysql
+  yum 安装mysql,设置开机启动，为mysql配置初始密码。
+  
+### jdk
+  之前考虑使用java的云平台版本，因此下载安装了jdk 和tomcat，目前未使用
+  下载并安装jdk1.7.0_65 版本，rpm 版本，用rpm -ivh 命令进行安装，安装完之后配置/etc/profile文件，修改path info
+
+### 设置工作目录/data
+将data文件夹设置为数据文件夹，log，backup，www都设在此下。
+
 ###安装redis
     wget
     make
