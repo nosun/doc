@@ -75,6 +75,18 @@ Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存
 	service redis start #启动
 	ps aux |grep redis  #查看状态
 	
+#### 解决redis启动的三个错误
+- 启动错误  
+    1.WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.  
+    2.WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+    
+- 解决方法  
+    第一个警告两个方式解决(overcommit_memory)
+    1.  echo "vm.overcommit_memory=1" > /etc/sysctl.conf
+    2.  echo 1 > /proc/sys/vm/overcommit_memory  不需要启机器就生效
+    第二个警告解决
+    1. echo 511 > /proc/sys/net/core/somaxconn
+	
 
 ##zimg安装步骤
 
