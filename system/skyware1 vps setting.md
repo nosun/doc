@@ -87,11 +87,21 @@ zimg的编译过程中需要这个，mosquitto的编译过程中也需要这个�
 	
 	ldconfig 
 
+### 安装php-redis 扩展
+    
+    wget https://github.com/phpredis/phpredis/archive/2.2.7.tar.gz
+    phpize
+    ./configure
+    make && make install
+    在/etc/php.d/ 下增加扩展加载 redis.ini文件
+    其中写入 extension=redis.so
+
 ### 安装mosquitto-php扩展
 	wget from github
 	./configure
 	make && make install
     在/etc/php.d/ 下增加扩展加载 mosquitto.ini文件
+    其中写入 extension=mosquittto.so
 	
 ### 安装swoole-php扩展
     wget swoole
@@ -101,6 +111,7 @@ zimg的编译过程中需要这个，mosquitto的编译过程中也需要这个�
     ./configure
     make && make install
     在/etc/php.d/ 下增加扩展加载 swoole.ini文件
+    其中写入 extension=swoole.so    
 
 ### 安装posix扩展
     yum install php5w-posix
@@ -135,27 +146,29 @@ zimg的编译过程中需要这个，mosquitto的编译过程中也需要这个�
 ### 设置Reids.conf
     daemonize yes
     
-    
 ### 设置Mosquitto.conf
+    做了部分设置，详情见mosquitto.conf
 
-
-
-    
 ### 设置Nginx配置文件
-
+    yun.conf
+    c1.conf
 
 ### 设置My.cnf
-
+    /etc/my.cnf
 
 ### 设置php.ini
-
+    /etc/php.ini
 
 ### 设置php-fpm参数
     php-fpm.d/www.conf
 
 ### 设置Swoole server参数
-
+    /www/c1.skyware.com.cn/Server/bin
 
 ### 设置web服务参数
+    /www/c1.skyware.com.cn/app的参数
+    
+### 域名解析
+### 登录重定向
 
 
