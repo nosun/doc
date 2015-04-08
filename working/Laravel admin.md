@@ -6,6 +6,7 @@
 - bugbar https://github.com/barryvdh/laravel-debugbar amazing  
 - auth 系统默认   
 - acl  https://github.com/Zizaco/entrust/tree/laravel-5
+- debug barryvdh/laravel-debugbar
 
 
 ##安装Laravel
@@ -199,7 +200,125 @@ After the migration, four new tables will be present:
 - `role_user` &mdash; stores [many-to-many](http://laravel.com/docs/4.2/eloquent#many-to-many) relations between roles and users
 - `permission_role` &mdash; stores [many-to-many](http://laravel.com/docs/4.2/eloquent#many-to-many) relations between roles and permissions
 
-### 云平台数据库建立
+### 测试角色，权限，用户，路由
+
+#### 建立角色
+    $owner = new Role();
+    $owner->name         = 'super';
+    $owner->display_name = 'super admin'; // optional
+    $owner->description  = 'super'; // optional
+    $owner->save();
+    
+    $admin = new Role();
+    $admin->name         = 'admin';
+    $admin->display_name = 'company administrator'; // optional
+    $admin->description  = 'company administrator'; // optional
+    $admin->save();
+
+#### 给用户添加角色
+
+    $user = User::where('username', '=', 'nosun')->first();
+    $user->roles()->attach($admin->id); // id only
+
+#### 添加权限
+
+    $createPost = new Permission();
+    $createPost->name         = 'create-post';
+    $createPost->display_name = 'Create Posts'; // optional
+    // Allow a user to...
+    $createPost->description  = 'create new blog posts'; // optional
+    $createPost->save();
+    
+    $editUser = new Permission();
+    $editUser->name         = 'edit-user';
+    $editUser->display_name = 'Edit Users'; // optional
+    // Allow a user to...
+    $editUser->description  = 'edit existing users'; // optional
+    $editUser->save();
+
+#### 给角色添加权限
+
+    $admin->attachPermission($createPost);
+    // equivalent to $admin->perms()->sync(array($createPost->id));
+    
+    $owner->attachPermissions(array($createPost, $editUser));
+    // equivalent to $owner->perms()->sync(array($createPost->id, $editUser->id));
+    
+#### 测试权限，角色
+
+    $user->hasRole('owner');   // false
+    $user->hasRole('admin');   // true
+    $user->can('edit-user');   // false
+    $user->can('create-post'); // true
+
+#### 测试路由
+在Yun\Http\routes.php 末尾增加规则
+
+    Entrust::routeNeedsRole('admin/*', 'admin');
+
+## 建立基础的数据表
+- yun_admin
+- yun_company
+- yun_device
+- yun_product
+- yun_user
+- yun_admin_log
+- yun_app
+- yun_app_version
+- yun_file
+- yun_device_module
+- yun_device_module_soft
+
+### 建立基础的模型
+- Admin
+- App
+- AppVersion
+- Company
+- Device
+- DeviceModule
+- DeviceModuleSoft
+- File
+- Permission
+- Role
+- User
+
+### 建立基础的控制器
+- Admin
+    - RoleController
+    - UserController
+    - PermissionController
+    - ProductController
+    - FileController
+    - DeviceController
+    - AppController
+    - AdminController
+- Front
+    - WelcomeController
+- Auth
+    - AuthController
+    - PasswordController          
+### 建立设置权限
+与模型对应
+- Admin
+- App
+- AppVersion
+- Company
+- Device
+- DeviceModule
+- DeviceModuleSoft
+- File
+- Permission
+- Role
+- User
+
+### 建立路由
+
+
+### 建立连接
+
+
+### 建立视图
+
 
 
 ### 前端进行压缩
