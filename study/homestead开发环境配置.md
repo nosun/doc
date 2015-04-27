@@ -1,5 +1,12 @@
 ## Homesteatd 开发环境配置
 
+`最近配置了Homestead，还是蛮简单的，配合phpstorm使用，开发起来很便利，可以抛弃xampp了`，在操作过程中自己做了较为详细的记录，希望能够帮得到一些遇到困难的朋友。
+
+### 前提
+- 安装virtualbox 略
+- 安装vagrant 略
+- 因为中间要启动vagrant，以及要编辑yaml配置文件，建议下载安装 git bash。
+
 ### 下载安装homestead.box
 - 因为网速原因，先手动下载box，并将其放在d:/homestead/目录下
 - 用git bash 进入d:/homestead下，输入命令：
@@ -10,22 +17,23 @@
 ### 安装 Homestead
 - git clone https://github.com/laravel/homestead.git Homestead
 
-> 不是很明白这是什么？ 下载之后，进入Homestead文件夹，其中有个init.sh脚本，运行之。
+> 下载 homestead的安装配置脚本，运行之。
 
 	bash init.sh
 
 此时Homestead.yaml 文件，将会被放置在你的 ~/.homestead 目录中。
 
 ### 配置 
+#### 生成ssh密匙
+
+ssh-keygen -t rsa -C "you@homestead"
+
+接下来输入生成密匙的目录，输入密码，确认，生成完毕。
 
 #### 配置你的 Provider
-
 provider: virtualbox
 
 #### 配置你的 SSH 密钥
-生成ssh密匙
-
-ssh-keygen -t rsa -C "you@homestead"
 
 > step1 输入sshkey所有生成的路径
 > step2 输入密匙 2次
@@ -71,7 +79,7 @@ ssh-keygen -t rsa -C "you@homestead"
 		#       client-id: foo
 		#       client-token: bar
 
-**`important:`** 文件中的格式要非常注意，冒号，tab 可能回引起虚拟机启动错误。
+**`important:`** 文件中的格式要非常注意，冒号，tab 可能回引起虚拟机启动错误，推荐用vi编辑器。
 
 ### 启动虚拟机
 
