@@ -75,6 +75,8 @@ ssh-keygen -t rsa -C "you@homestead"
 
 ### 启动虚拟机
 
+进入 ~/Homestead 目录  
+
 	vagrant up
 
 ### 进入虚拟机
