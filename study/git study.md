@@ -118,3 +118,9 @@
 
 ###衍合
 - 将一个分支整合另一个分支的办法有两种，merge和rebase。
+
+
+### 如何强制从仓库拉取，覆盖本地的修改
+
+    git fetch --all
+    git reset --hard origin/master
