@@ -124,3 +124,14 @@
 
     git fetch --all
     git reset --hard origin/master
+
+
+### 新建分支
+    
+    git branch nosun
+    git checkout nosun //切换分支
+    git push origin nosun // 推送分支到远程，并创建nosun 分支
+    
+
+### 合并分支
+    
