@@ -319,8 +319,6 @@ After the migration, four new tables will be present:
 
 ### 建立视图
 
-
-
 ### 前端进行压缩
 使用glup工具
 
