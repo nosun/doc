@@ -5,12 +5,12 @@
 
     # 此为注释 – 将被 Git 忽略
 
-            *.a       # 忽略所有 .a 结尾的文件
-            !lib.a    # 但 lib.a 除外
-            /TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
-            build/    # 忽略 build/ 目录下的所有文件
+    *.a       # 忽略所有 .a 结尾的文件
+    !lib.a    # 但 lib.a 除外
+    /TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
+    build/    # 忽略 build/ 目录下的所有文件
 
-            doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+    doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
 
 另外 git 提供了一个全局的 .gitignore，你可以在你的用户目录下创建 ~/.gitignoreglobal 文件，以同样的规则来划定哪些文件是不需要版本控制的。
 
