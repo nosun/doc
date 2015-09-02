@@ -1,5 +1,9 @@
-## ÍøÖ·ÊÕ²Ø
+## ç½‘å€æ”¶è—
 
-### ×ÊÔ´
+### èµ„æº
 #### JS
 - http://microjs.com/ 
+
+### åšå®¢
+- http://andieguo.com/ jekyll sqoop
+- 
